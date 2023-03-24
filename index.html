@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="printRectangle()">
+<canvas id="myCanvas"></canvas>
+<p id="myRectagle"></p>
+Diện tích:
+<p id="areas"></p>
+Chu vi:
+<p id="perimeters"></p>
+</body>
+<script>
+    let Rectangle = function () {
+        this.width = '';
+        this.height = '';
+        this.areas = function () {
+            let acreage = Number(this.width) * Number(this.height);
+            return acreage;
+        };
+        this.perimeters = function () {
+            let perimeter = (Number(this.width) + Number(this.height)) * 2;
+            return perimeter;
+        };
+    }
+    function getEle(id) {
+        return  document.getElementById(id);
+    }
+    function printRectangle() {
+        let rectangle = new Rectangle();
+        rectangle.width = prompt("Nhập chiều dài HCN: ");
+        rectangle.height = prompt("Nhập chiều rộng HCN: ");
+
+
+        //in Canvas
+        getEle('myCanvas').style.width = rectangle.width + 'px';
+        getEle('myCanvas').style.height = rectangle.height + 'px';
+        getEle('myCanvas').style.border = '1px solid #d3d3d3';
+
+        //in dài rộng
+        getEle('myRectagle').innerHTML = "Dài: " + rectangle.width + "<br>" + "Rộng: " + rectangle.height;
+
+        //in diện tích
+        getEle('areas').innerHTML = rectangle.areas();
+
+        getEle('perimeters').innerHTML = rectangle.perimeters();
+    }
+</script>
+</html>
